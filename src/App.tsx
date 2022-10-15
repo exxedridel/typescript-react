@@ -30,14 +30,9 @@ const INITIAL_STATE = [
 ];
 
 function App() {
-  // const [subs, setSubs] = useState<Arrar<Sub>>([]);
-  // can also be writed like this
-  // const [subs, setSubs] = useState<Sub[]>([]);
-
-  // Sets the subs interface from AppState interface when multiple states are used
   const [subs, setSubs] = useState<AppState["subs"]>([]);
   const [newSubsNumber, setNewSubsNumber] = useState<AppState["newSubsNumber"]>(0);
-  // this helps when States are more complex 
+  
 
   useEffect(() => {
     setSubs(INITIAL_STATE)

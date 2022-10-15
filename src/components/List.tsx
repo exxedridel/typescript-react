@@ -1,4 +1,6 @@
 interface Props {
+   // children: JSX.Element or JSX.Element[]
+   // here we can still add children by props, if really needed
    subs: Array<{
       nick: string
       avatar: string
@@ -7,10 +9,20 @@ interface Props {
    }>
 }
 
-// To be able to use <List>{children}</List> within component
-const List: React.FunctionComponent<Props> = ({subs}) => {
-   // or List: React.FC<Props>
-// * but is not recommended to mantain TS principles *
+// this way we can't add any children, respecting TS principles ✔. 
+const List = ({subs}: Props) => {
+
+   // Can also be render with the method renderList, like this:
+   
+   // const renderList = () => {
+   //    return subs.map(sub => {
+   //       <li>
+   //          <img src="" alt="" />
+   //          <h4></h4>
+   //          <p></p>
+   //       </li>
+   //    })
+   // } 
 
    return (
       <ul>
