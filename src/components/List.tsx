@@ -9,39 +9,28 @@ interface Props {
    }>
 }
 
-// this way we can't add any children, respecting TS principles ✔. 
-const List = ({subs}: Props) => {
+const List = ({ subs }: Props) => {
 
-   // Can also be render with the method renderList, like this:
-   
-   // const renderList = () => {
-   //    return subs.map(sub => {
-   //       <li>
-   //          <img src="" alt="" />
-   //          <h4></h4>
-   //          <p></p>
-   //       </li>
-   //    })
-   // } 
+   const renderList = (): JSX.Element[] => {
+      return subs.map(sub => {
+         return (
+            <li key={sub.nick}>
+               <img src={sub.avatar} alt={"Avatar for ${sub.nick}"} />
+               <h4>
+                  {sub.nick} (<small>{sub.subMonths}</small>)
+               </h4>
+               <p>
+                  {sub.description?.substring(0, 21)}
+                  {sub.description ? <a href=""><small>... ver más</small></a> : ""}
+               </p>
+            </li>
+         )
+      })
+   }
 
    return (
       <ul>
-         {
-            subs.map((sub) => {
-               return (
-                  <li key={sub.nick}>
-                     <img src={sub.avatar} alt={"Avatar for ${sub.nick}"} />
-                     <h4>
-                        {sub.nick} (<small>{sub.subMonths}</small>)
-                     </h4>
-                     <p>
-                        {sub.description?.substring(0, 21)}
-                        {sub.description ? <a href=""><small>... ver más</small></a> : ""}
-                     </p>
-                  </li>
-               );
-            }
-         )}
+         {renderList()}
       </ul>
    )
 }
