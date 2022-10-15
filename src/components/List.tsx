@@ -6,13 +6,11 @@ interface Props {
       description?: string
    }>
 }
-// avoid unecessary "any" use with typed props 
 
-// export default function List(props: Props) {
-//    const {subs} = props
-
-// same as above: 
-export default function List({subs}: Props) {
+// To be able to use <List>{children}</List> within component
+const List: React.FunctionComponent<Props> = ({subs}) => {
+   // or List: React.FC<Props>
+// * but is not recommended to mantain TS principles *
 
    return (
       <ul>
@@ -35,3 +33,5 @@ export default function List({subs}: Props) {
       </ul>
    )
 }
+
+export default List;
