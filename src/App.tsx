@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 // import logo from './logo.svg';
 import "./App.css";
+import List from "./components/List"
 
 interface AppState {
   subs: Array<Sub>
@@ -45,25 +46,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Heved subs</h1>
-        <ul>
-          {subs.map((sub) => {
-            return (
-              // typescript provide better auto-complete
-              <li key={sub.nick}>
-                <img src={sub.avatar} alt={"Avatar for ${sub.nick}"} />
-                <h4>
-                  {sub.nick} (<small>{sub.subMonths}</small>)
-                </h4>
-                {/* typescript auto corrects when description needed ? sing for undefined property */}
-                <p>
-                  {sub.description?.substring(0, 21)}
-                  {sub.description ? "..." : ""}
-                </p>
-              </li>
-            );
-          })}
-        </ul>
+        <h1>BLM subscribers</h1>
+          <List subs={subs}/>
       </header>
     </div>
   );
