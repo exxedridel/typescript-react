@@ -27,18 +27,21 @@ const INITIAL_STATE = [
 function App() {
   const [subs, setSubs] = useState<AppState["subs"]>([]);
   const [newSubsNumber, setNewSubsNumber] = useState<AppState["newSubsNumber"]>(0);
-  
 
   useEffect(() => {
     setSubs(INITIAL_STATE)
   }, [])
+
+  const handleNewSub = (newSub: Sub): void =>  {
+    setSubs(subs => [...subs, newSub])
+  }
 
   return (
     <div className="App">
       <header className="App-header">
         <h1>BLM subscribers</h1>
           <List subs={subs}/>
-          <Form/>
+          <Form onNewSub={handleNewSub}/>
       </header>
     </div>
   );
