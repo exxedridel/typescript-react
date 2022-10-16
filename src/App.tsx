@@ -2,17 +2,12 @@ import { useState, useEffect } from "react";
 // import logo from './logo.svg';
 import "./App.css";
 import List from "./components/List"
+import Form from "./components/Forms"
+import {Sub} from "./types"
 
 interface AppState {
   subs: Array<Sub>
   newSubsNumber: number
-}
-
-interface Sub {
-  nick: string
-  avatar: string
-  subMonths: number
-  description?: string
 }
 
 const INITIAL_STATE = [
@@ -43,6 +38,7 @@ function App() {
       <header className="App-header">
         <h1>BLM subscribers</h1>
           <List subs={subs}/>
+          <Form/>
       </header>
     </div>
   );
